@@ -2,10 +2,42 @@
 
 <html>
     <title>UAF OS</title>
-    <body>
+    <body style="background-image:url(./black_rillaru.png); background-size: cover; height: 100vh;">
+        <div style="border-radius: 40px; border:solid; padding: 20px; position: absolute; top: 50%; left:50%; transform: translate(-50%, -50%); background-color: #9cc9d9;">
         <h1> WELCOME to UAF OS</h1>
         <p>UAF OS</p>
-        <img src = "./black_rillaru.png"/>
         <a href="https://fractalsoftworks.com/forum/index.php?topic=12709.0">UAF MOD</a>
+        </div>
+        <script>
+            function ut(){
+            var ct = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            var tt = document.querySelector("#timeEl");
+            var rgex = ct.match(/^(\d{1,2}):(\d{2}):(\d{2}) (AM|PM)$/i);
+            const [_,hrs,mns,ss,ampm] = rgex;
+            let hr = parseInt(hrs,10);
+            console.log(hr,ampm,hrs,mns)
+            const pl = ampm.toLowerCase();
+            if (pl === "am"){
+                hr = hr === 12 ? 0 : hr;
+            } else {
+                hr = hr === 12 ? 12 : hr + 12;
+            }
+            const min = mns.padStart(2, '0'); // Ensures 2 digits (e.g., "5" → "05")
+            const chr = hr.toString().padStart(2, '0'); // Ensure hour is 2 digits (e.g., 9 → "09")
+            const tfhrt = `${chr}:${min}.${ss}`;
+            tt.innerHTML = tfhrt;
+            }
+            
+            setInterval(ut ,1000);
+
+        </script>
+        <div style="position:absolute; width: 100%; display:  flex; justify-content: space-between; background-color: #33739d; height: 5%; backdrop-filter: blur(10px);">
+            <p style="margin-left: 20px;"> UAF OS</p>
+
+            <p id="timeEl"
+             style=" margin-right: 20px;">
+             
+            </p>
+        </div>
     </body>
 </html>
